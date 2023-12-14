@@ -1,9 +1,10 @@
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-import os
+import mysql.connector
 
-test_path = 'D:\\Personal Projects\\Nutrition Web-App\\archive\\test'
-
-train_path = 'D:\\Personal Projects\\Nutrition Web-App\\archive\\train'
+def get_fruit_info(fruit_name):
+    # Connect to the database
+    connection = mysql.connector.connect(
+        host="your_host",  # usually localhost if the database is on your machine
+        user="your_username",
+        password="your_password",
+        database="fruitsdb"
+    )
