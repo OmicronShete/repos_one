@@ -1,4 +1,6 @@
-import noms 
-from noms import client
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import os
 
-clien = noms.Client("0nneNLgU6lLfuluxkyde7qCScfzhjkS8GJoPqSP6")    # API Key
