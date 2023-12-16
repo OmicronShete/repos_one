@@ -1,6 +1,11 @@
 import mysql.connector
 import tkinter as tk
 from tkinter import filedialog, PhotoImage
+from ultralytics import YOLO
+import easyocr
+import os
+import re
+
 
 # browse image function
 
