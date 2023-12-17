@@ -1,15 +1,19 @@
 import mysql.connector
 import tkinter as tk
-from tkinter import filedialog, PhotoImage
+from tkinter import filedialog
 from ultralytics import YOLO
 import easyocr
 import os
-import re
 import shutil
 
 
 # model 
 model = YOLO("yolov8s.pt","v8")
+
+
+# go back
+def goback():
+    pass
 
 
 # browse image function & take file path
@@ -56,6 +60,7 @@ def blast():
     Label_or.destroy()
     Get_Button.destroy()
     image_button.destroy()
+    suggest_diet_button.destroy()
 
 
 
@@ -139,6 +144,8 @@ def get_fruit_info_img(image_name, image_path):
 
 def get_fruit_info_name(fruit_name1):
 
+    blast()
+
     # Connect to the database
     connection = mysql.connector.connect(
         host="localhost",  # usually localhost if the database is on your machine
@@ -165,10 +172,56 @@ def get_fruit_info_name(fruit_name1):
         label_name_2.place(x = 480, y = 150)
         # item_found()
 
+        back_button = tk.Button(root, text="GO BACK", fg="yellow", bg="red",
+                                font=("JetBrains Mono", 17), justify="center")
+        back_button.place(x = 1000, y = 570)
+
     else:
         # print(f"{fruit_name} Not Found !")
         label_name_3 = tk.Label(root, text=f"{fruit_name1} Not Found")
         label_name_3.place(x = 50, y = 50)
+
+
+
+# suggest button 
+def suggest():
+    blast()
+    root.config(bg="blue")
+    suggest_diet_button.destroy()
+
+    # label select body type    
+    Label1 = tk.Label(root, text="SELECT YOUR BODY TYPE : ", fg="black", bg="blue", 
+                        font=("JetBrains Mono", 17))
+    Label1.place(x = 100, y = 100)
+
+
+    # skinny 
+    skinny_button = tk.Button(root, text="SKINNYY", fg="black", bg="skyblue", justify="center",
+                            #   command=skinny,
+                                font=("JetBrains Mono", 17))
+    skinny_button.place(x = 70, y = 180, height=50, width=250)
+
+
+    # Fit
+    fit_button = tk.Button(root, text="FIT", fg="black", bg="skyblue",
+                        #    command=fit,
+                                font=("JetBrains Mono", 17), justify="center")
+    fit_button.place(x = 70, y = 260, height=50, width=250)
+
+
+    # Muscular
+    muscular_button = tk.Button(root, text="MUSCULAR", fg="black", bg="skyblue",
+                                # command=muscular,
+                                font=("JetBrains Mono", 17), justify="center")
+    muscular_button.place(x = 70, y = 340, height=50, width=250)
+
+
+    # Bulk
+    bulk_button = tk.Button(root, text="BULK", fg="black", bg="skyblue",
+                            # command=bulk,
+                                font=("JetBrains Mono", 17), justify="center")
+    bulk_button.place(x = 70, y = 420, height=50, width=250)
+
 
 
 
@@ -187,19 +240,19 @@ if __name__ == "__main__":
     # First label
 
     Label_name = tk.Label(root, text="Fruit Name : ", fg="white", bg="dark blue", font=("Fira code", 25, "bold"))
-    Label_name.place(x = 930, y = 205)
+    Label_name.place(x = 930, y = 155)
 
 
     # Input Box
 
     Entry1 = tk.Entry(root, textvariable=tk.StringVar, bg="sky blue", fg="black", font="JetBrains", justify="center", borderwidth=20, relief="flat")
-    Entry1.place(x = 860, y = 290, height=50, width=350)
+    Entry1.place(x = 860, y = 240, height=50, width=350)
 
 
     # Submit Button
 
     Get_Button = tk.Button(root, text="SUBMIT", command=get_name, fg="white", bg="blue", font=("JetBrains"), justify="center")
-    Get_Button.place(x = 930, y = 415, width=200)
+    Get_Button.place(x = 930, y = 365, width=200)
 
 
     # image button
@@ -207,13 +260,21 @@ if __name__ == "__main__":
     upload_image = tk.PhotoImage(file='C:\\Users\\Hp\\Downloads\\drop or upload.png')
 
     image_button = tk.Button(root, image=upload_image, command=browse_image)
-    image_button.place(x = 40, y = 150)
+    image_button.place(x = 40, y =100)
 
 
     # OR lable
 
     Label_or = tk.Label(root, text="OR", fg="white", bg="dark blue", font=("Fira code", 25, "bold"))
     Label_or.place(x = 725, y = 300)
+
+
+    # suggest diet plan
+
+    suggest_diet_button = tk.Button(root, text="Suggest Me A Diet 😋", fg="black", bg="skyblue",
+                                    command=suggest,
+                                font=("JetBrains Mono", 17))
+    suggest_diet_button.place(x = 480, y = 550, height=70, width=350)
 
 
     root.mainloop()
