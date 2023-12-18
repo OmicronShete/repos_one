@@ -5,7 +5,7 @@ from ultralytics import YOLO
 import easyocr
 import os
 import shutil
-
+import customtkinter
 
 # model 
 model = YOLO("yolov8s.pt","v8")
@@ -33,7 +33,7 @@ def extract_image_name(image_path):
 # delete predict folders
 
 def delete_all_folders():
-    folder_path = 'D:/Personal Projects/Nutrition Web-App/runs/detect/'
+    folder_path = 'E:/Nutrition Web-App/runs/detect/'
     items = os.listdir(folder_path)
 
     # Iterate through each item
@@ -306,7 +306,7 @@ def get_fruit_info_img(image_name, image_path):
     print(detect_o[0])
 
     reader = easyocr.Reader(['en'])
-    n_result = reader.readtext(f'D:\\Personal Projects\\Nutrition Web-App\\runs\\detect\\predict\\{image_name}',detail=0)
+    n_result = reader.readtext(f'E:\\Nutrition Web-App\\runs\\detect\\predict\\{image_name}',detail=0)
     name = n_result[0][:-4]
 
     alpha_name = ''.join(char for char in name if char.isalpha())
@@ -390,6 +390,7 @@ def get_fruit_info_name(fruit_name1):
 def suggest():
     blast()
     root.config(bg="blue")
+    
     suggest_diet_button.destroy()
 
     # label select body type    
@@ -426,6 +427,12 @@ def suggest():
     bulk_button.place(x = 70, y = 420, height=50, width=250)
 
 
+    # back_button = tk.Button(root, text="BACK", fg="yellow", bg="red",
+    #                         command=suggest_diet_button,
+    #                             font=("JetBrains Mono", 17), justify="center")
+    # back_button.place(x = 450, y = 285, height=55, width=300)
+
+        
 
 # main 
 
@@ -474,9 +481,10 @@ if __name__ == "__main__":
     # suggest diet plan
 
     suggest_diet_button = tk.Button(root, text="Suggest Me A Diet 😋", fg="black", bg="skyblue",
-                                    command=suggest,
-                                font=("JetBrains Mono", 17))
+                                        command=suggest,
+                                    font=("JetBrains Mono", 17))
     suggest_diet_button.place(x = 480, y = 550, height=70, width=350)
+
 
 
     root.mainloop()
