@@ -379,9 +379,10 @@ def get_fruit_info_name(fruit_name1):
 
 
     else:
-        # print(f"{fruit_name} Not Found !")
-        label_name_3 = tk.Label(root, text=f"{fruit_name1} Not Found")
-        label_name_3.place(x = 50, y = 50)
+        
+        root.config(bg="black")
+        label_name_3 = tk.Label(root, text=f"No Fruit found with name : {fruit_name1}", fg="blue", bg="black", font=("JetBrains Mono", 25))
+        label_name_3.place(x = 300, y = 300)
 
 
 
