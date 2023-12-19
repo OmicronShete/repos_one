@@ -18,7 +18,7 @@ def browse_image():
         
     extract_image_name(image_path)
 
-
+ 
 
 # Extract Image name
 def extract_image_name(image_path):
