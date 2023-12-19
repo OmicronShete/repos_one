@@ -5,7 +5,6 @@ from ultralytics import YOLO
 import easyocr
 import os
 import shutil
-import customtkinter
 
 # model 
 model = YOLO("yolov8s.pt","v8")
