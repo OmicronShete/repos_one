@@ -347,7 +347,7 @@ def get_fruit_info_img(image_name, image_path):
 
 
 # fruit detection by name 
-
+    
 def get_fruit_info_name(fruit_name1):
 
     blast()
