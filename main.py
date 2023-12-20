@@ -13,7 +13,7 @@ model = YOLO("yolov8s.pt","v8")
 # browse image function & take file path
 def browse_image():
     global image_path
-    image_path = filedialog.askopenfilename()
+    image_path = filedialog.askopenfilename(initialdir=r'/') 
     print("Selected Image:", image_path)
         
     extract_image_name(image_path)
