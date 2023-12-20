@@ -442,7 +442,7 @@ if __name__ == "__main__":
 
     root = tk.Tk()
     root.state("zoomed")
-    root.title("Nutrition Detection")
+    root.title("Fruit Detection Application")
     root.config(bg="dark blue")
 
 
